@@ -118,4 +118,53 @@ h1, h2, h3 { font-family: var(--font-display); font-weight: 400; margin: 0; }
 
 .modal-split { display: flex; gap: 30px; margin-top: 20px; }
 .modal-poster { width: 200px; border-radius: 8px; box-shadow: 0 10px 20px rgba(0,0,0,0.5); object-fit: cover; }
-@media (max-width: 600px) { .modal-split { flex-direction: column; align-items: center; text-align: center; } }
+
+/* ==========================================
+   ELITE MOBILE RESPONSIVENESS
+   ========================================== */
+
+/* Tablets & Large Phones */
+@media (max-width: 768px) {
+  /* Header Adjustments */
+  .luxury-header { padding: 30px 15px 15px; }
+  h1 { font-size: 1.8rem; }
+  .theme-btn { top: 0; }
+  
+  #premium-search { 
+    font-size: 1rem; 
+    padding: 12px 20px; 
+  }
+  
+  /* Create a 2-Column Mobile Grid */
+  .grid-container { 
+    grid-template-columns: repeat(auto-fill, minmax(150px, 1fr)); 
+    gap: 15px; 
+    padding: 15px;
+  }
+  
+  /* Scale down posters for mobile */
+  .card-img, .skeleton { height: 260px; } 
+  .card-content { padding: 12px; }
+  .card-content h3 { font-size: 1rem !important; line-height: 1.3; margin-bottom: 5px; }
+  .muted-text { font-size: 0.8rem; }
+  
+  /* Stack Statistics */
+  .vault-stats { flex-direction: column; gap: 10px; padding: 0 15px; }
+  
+  /* Optimize Modal for Touch */
+  .glass-modal { width: 95%; border-radius: 12px; }
+  .modal-content { padding: 25px 20px; }
+  .modal-split { flex-direction: column; align-items: center; text-align: center; gap: 15px; }
+  .modal-poster { width: 160px; box-shadow: 0 5px 15px rgba(0,0,0,0.5); }
+  #close-modal { top: 15px; right: 15px; }
+}
+
+/* Small Phones (iPhone SE, older Androids) */
+@media (max-width: 400px) {
+  .vault-nav { gap: 10px; }
+  .nav-btn { font-size: 0.9rem; padding: 5px; }
+  
+  /* Squeeze grid slightly more */
+  .grid-container { grid-template-columns: repeat(auto-fill, minmax(130px, 1fr)); gap: 10px; }
+  .card-img, .skeleton { height: 200px; }
+}
