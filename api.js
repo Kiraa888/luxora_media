@@ -53,3 +53,23 @@ export async function fetchFullDetails(id) {
     return null; 
   }
 }
+
+export async function fetchTrending() {
+  if (abortController) abortController.abort();
+  abortController = new AbortController();
+
+  try {
+    const response = await fetch(
+      `${BASE_URL}/trending/movie/week?api_key=${API_KEY}`,
+      { signal: abortController.signal }
+    );
+    
+    if (!response.ok) throw new Error('Network error');
+    const data = await response.json();
+    return data.results;
+  } catch (error) {
+    if (error.name === 'AbortError') return null;
+    return [];
+  }
+}
+
