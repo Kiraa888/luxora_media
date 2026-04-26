@@ -2,7 +2,7 @@ import { AppState } from './storage.js';
 
 // Note: Secure in backend proxy for production
 const API_KEY = '6c3ad75b1452e69636511eb2ad5175ca'; 
-const BASE_URL = 'https://api.themoviedb.org/3';
+const BASE_URL = 'https://corsproxy.io/?https://api.themoviedb.org/3';
 const MAX_CACHE = 20;
 
 let abortController;
