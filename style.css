@@ -45,7 +45,7 @@ h1, h2, h3 { font-family: var(--font-display); font-weight: 400; margin: 0; }
 
 .search-wrapper { max-width: 600px; margin: 20px auto 0; position: relative; }
 #premium-search {
-  width: 100%; padding: 16px 24px; background: var(--surface-color);
+  width: 100%; padding: 16px 24px; box-sizing: border-box; background: var(--surface-color);
   border: 1px solid rgba(212, 175, 55, 0.3); border-radius: 30px;
   color: var(--text-primary); font-size: 1.1rem; font-family: var(--font-base); outline: none;
   transition: all 0.3s ease; backdrop-filter: blur(10px);
@@ -63,6 +63,7 @@ h1, h2, h3 { font-family: var(--font-display); font-weight: 400; margin: 0; }
   border: 1px solid rgba(212, 175, 55, 0.15); border-radius: 12px;
   overflow: hidden; transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
   cursor: pointer; display: flex; flex-direction: column;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.6);
 }
 .card:hover { transform: translateY(-8px); box-shadow: 0 15px 35px color-mix(in srgb, var(--accent-gold) 20%, transparent); border-color: rgba(212, 175, 55, 0.5); }
 
