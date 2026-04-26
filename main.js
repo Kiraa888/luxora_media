@@ -1,5 +1,5 @@
 import { AppState } from './storage.js';
-import { fetchSearchData } from './api.js';
+import { fetchSearchData, fetchTrending } from './api.js';
 import { renderCards, renderStats, renderSkeletons, openDetails } from './ui.js';
 
 const searchInput = document.getElementById('premium-search');
@@ -15,13 +15,23 @@ const themeToggle = document.getElementById('theme-toggle');
 if (localStorage.getItem('theme') === 'light') document.body.classList.add('light-theme');
 
 // ==========================================
-// SEARCH & INPUT EVENTS
+// INITIAL LOAD & SEARCH LOGIC
 // ==========================================
 let searchTimeout;
 
+// 🌟 New: Load Trending Feed
+async function loadFeatured() {
+  renderSkeletons();
+  const results = await fetchTrending();
+  if (results) {
+    AppState.currentResults = results;
+    renderCards(AppState.currentResults);
+  }
+}
+
 async function handleSearch(query) {
   if (!query || query.length < 2) {
-    resultsGrid.innerHTML = '';
+    loadFeatured();
     return;
   }
   renderSkeletons();
@@ -32,9 +42,21 @@ async function handleSearch(query) {
   }
 }
 
+// Automatically load trending movies when the user opens the site
+loadFeatured();
+
+// ==========================================
+// SEARCH & INPUT EVENTS
+// ==========================================
 searchInput.addEventListener('input', (e) => {
   clearTimeout(searchTimeout);
   const query = e.target.value.trim();
+  
+  if (!query || query.length < 2) {
+    loadFeatured(); // Instantly show trending when search is cleared
+    return;
+  }
+  
   searchTimeout = setTimeout(() => handleSearch(query), 400);
 });
 
@@ -77,8 +99,8 @@ tabSearch.addEventListener('click', () => {
   tabWatchlist.classList.remove('active');
   searchSection.classList.remove('hidden');
   document.getElementById('stats-container').innerHTML = '';
-  resultsGrid.innerHTML = '';
   searchInput.value = '';
+  loadFeatured(); // Show trending when navigating back to the search tab
   window.scrollTo({ top: 0, behavior: 'smooth' }); 
 });
 
