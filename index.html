@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Luxora Media | Premium Curation</title>
+  <link rel="stylesheet" href="style.css">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&family=Playfair+Display:wght@400;600&display=swap" rel="stylesheet">
+</head>
+<body>
+
+  <header class="luxury-header">
+    <div class="header-content">
+      <div class="header-top">
+        <h1>Luxora Media</h1>
+        <button id="theme-toggle" class="icon-btn theme-btn">🌓</button>
+      </div>
+      
+      <nav class="vault-nav">
+        <button id="tab-search" class="nav-btn active">Global Database</button>
+        <button id="tab-watchlist" class="nav-btn">My Vault</button>
+      </nav>
+      
+      <div class="search-wrapper" id="search-section">
+        <input type="text" id="premium-search" placeholder="Search for cinematic excellence..." autocomplete="off">
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <div id="stats-container"></div>
+
+    <section id="results-grid" class="grid-container"></section>
+  </main>
+
+  <dialog id="media-modal" class="glass-modal">
+    <div class="modal-content">
+      <button id="close-modal" class="icon-btn">✕</button>
+      <div id="modal-body"></div>
+    </div>
+  </dialog>
+
+  <script type="module" src="main.js"></script>
+</body>
+</html>
