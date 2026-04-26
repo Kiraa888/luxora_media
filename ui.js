@@ -5,7 +5,7 @@ const resultsGrid = document.getElementById('results-grid');
 const statsContainer = document.getElementById('stats-container');
 const modal = document.getElementById('media-modal');
 const modalBody = document.getElementById('modal-body');
-const IMG_URL = 'https://image.tmdb.org/t/p/w500';
+const IMG_URL = 'https://corsproxy.io/?https://image.tmdb.org/t/p/w500';
 const FALLBACK_IMG = 'https://via.placeholder.com/500x750/050505/d4af37?text=Classified+Archive';
 
 export function sanitize(str) {
